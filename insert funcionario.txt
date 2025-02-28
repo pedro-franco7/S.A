@@ -1,0 +1,28 @@
+DELIMITER //
+CREATE PROCEDURE mySp_funcionarioUpdate(
+v_id_funcionario INT,
+v_nome_funcionario VARCHAR(50),
+v_salario_funcionario DECIMAL(10,2),
+v_taxa_comissao CHAR(2),
+v_telefone_funcionario VARCHAR(20))
+BEGIN
+IF (((v_id_funcionario > 0) && (v_id_funcionario != '') ) && (v_nome_funcionario != '') &&
+(v_salario_funcionario != '') && (v_taxa_comissao != '') &&
+(v_telefone_funcionario != '')) THEN
+UPDATE funcionario SET nome_funcionario =v_nome_funcionario,
+salario_funcionario =v_salario_funcionario,
+taxa_comissao =v_taxa_comissao,
+telefone_funcionario =v_telefone_funcionario
+WHERE id_funcionario =v_id_funcionario;
+ELSE
+SELECT 'O novos NOME, Salario, Taxa Comissão e Telefone devem ser informados!'
+AS Msg;
+END IF;
+END;
+//
+
+
+
+CALL mySp_funcionarioUpdate(1,'Pedro Henrique','4500.99','8','(47)95667-2112');
+
+
