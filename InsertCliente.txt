@@ -19,6 +19,8 @@ END;
 //
 
 
+CALL mySp_clienteInsert('Messi','101.006.789-10','(10)1010-1010','Rua rio das Antas,97');
+
 
 
 
