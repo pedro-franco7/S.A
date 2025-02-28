@@ -1,0 +1,27 @@
+DELIMITER //
+CREATE PROCEDURE mySp_clienteInsert(
+v_nome_cliente VARCHAR(50),
+v_cpf_cliente VARCHAR(14),
+v_telefone_cliente VARCHAR(20),
+v_endereco VARCHAR(50))
+
+BEGIN
+IF ((v_nome_cliente != '') && (v_cpf_cliente != '') && (v_telefone_cliente != '') && (v_endereco!= '')) THEN
+INSERT INTO cliente
+(nome_cliente,cpf_cliente,telefone_cliente,endereco)
+VALUES
+(v_nome_cliente,v_cpf_cliente,v_telefone_cliente,v_endereco);
+ELSE
+SELECT 'NOME, CPF, TELEFONE e ENDEREÇO devem ser fornecidos para o cadastro!'
+AS Msg;
+END IF;
+END;
+//
+
+
+
+
+
+
+
+
